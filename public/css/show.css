@@ -1,0 +1,20 @@
+
+
+.footer a {
+  display: inline-block;
+  min-width: 180px;
+  text-align: center;
+  background-color: #293b6a;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 1px dashed #FFF;
+  box-shadow: 0px 0px 0px 5px #293b6a;
+  margin: 40px 10px 10px 10px;}
+
+ul {border:solid 2px; }
+table tr th{ padding: 30px; border: solid 1px;}
+.wrapper {display: flex;}
+.menubar {margin: 10px 20px;}

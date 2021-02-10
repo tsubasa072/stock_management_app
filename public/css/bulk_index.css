@@ -1,0 +1,20 @@
+table {margin: auto; }
+tr,th,td {padding: 10px;}
+
+.footer input,a {
+  display: inline-block;
+  min-width: 180px;
+  text-align: center;
+  background-color: #293b6a;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 1px dashed #FFF;
+  box-shadow: 0px 0px 0px 5px #293b6a;
+  margin: 10px 10px 10px 10px;}
+
+.tool {width: 60px;}
+.footer input {margin: 40px 10px;}
+table th {border: solid 1px;}
