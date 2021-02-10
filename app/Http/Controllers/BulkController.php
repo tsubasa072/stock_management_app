@@ -10,7 +10,7 @@ class BulkController extends Controller
     public function index(Request $request)
       {
         $foodstuff = array(
-          '玉ねぎ' => '1個',
+          '玉ねぎ' => '3個',
           '人参' => '2個',
           'じゃがいも' => '3個',
         );
