@@ -4,6 +4,10 @@
 
 @section('menubar')
       @parent
+      
+      @if (Auth::check())
+      <tr><th>USER: {{$user->name}}</th></tr>
+      @endif
       <table>
       <tr>
         <th><a href="http://localhost:8000/user">ユーザー管理</a></th>

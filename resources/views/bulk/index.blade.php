@@ -14,29 +14,17 @@
         <th>在庫</th>
         <th>入出</th>
       </tr>
+      @foreach($item as $items)
       <tr>
-        <th>食材</th>
+        <th>{{$items->category_id}}</th>
       </tr>
-        @foreach($foodstuff as $key => $val)
       <tr>
-        <td><input type="checkbox" id="{{$key}}" value="">
-        <label for="{{$key}}">{{$key}}</label></td>
-        <td>{{$val}}</td>
-        <td><input type="number" class="tool" step="0.5"></td>
+        <td> <input type="checkbox" id="{{$items->name}}" value="">
+          <label for="{{$items->name}}">{{$items->name}}</label></td>
+        <td>{{$items->volume}}個</td>
+        <td> <input type="number" class="tool" value=""> </td>
       </tr>
-        @endforeach
-
-      <tr>
-        <th>キッチン用品</th>
-      </tr>
-        @foreach($kitchen as $k => $v)
-      <tr>
-        <td><input type="checkbox" id="{{$k}}" value="">
-        <label for="{{$k}}">{{$k}}</label></td>
-        <td>{{$v}}</td>
-        <td><input type="number" class="tool" step="0.5"></td>
-      </tr>
-        @endforeach
+      @endforeach
     </table>
 @endsection
 
@@ -53,6 +41,9 @@
       <input type="submit" value="削除">
     </form>
     <a href="http://localhost:8000/buy_list">買い物リスト</a>
+  </tr>
+  <tr>
+    <a href="http://localhost:8000/stock/index">戻る</a>
   </tr>
     </table>
 @endsection

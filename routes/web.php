@@ -13,7 +13,10 @@
 
 Route::get('stock', 'StockController@top');
 Route::get('stock/index', 'StockController@index');
-Route::get('stock/auth', 'StockController@auth');
+Route::get('stock/login', 'StockController@login');
+Route::get('stock/auth', 'StockController@getAuth');
+Route::post('stock/auth', 'StockController@postAuth');
+
 Route::get('stock/create', 'StockController@create');
 Route::post('stock/store', 'StockController@store');
 
@@ -62,3 +65,7 @@ Route::post('buy_list/destroy', 'ListController@destroy');
 Route::get('user', 'AuthenticationController@index');
 Route::get('user/store', 'AuthenticationController@store');
 Route::get('user/destroy', 'AuthenticationController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

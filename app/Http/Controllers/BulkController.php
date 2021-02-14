@@ -9,17 +9,8 @@ class BulkController extends Controller
 {
     public function index(Request $request)
       {
-        $foodstuff = array(
-          '玉ねぎ' => '3個',
-          '人参' => '2個',
-          'じゃがいも' => '3個',
-        );
-        $kitchen = array(
-          '洗剤' => '1個',
-          'ネット' => '1個',
-          'ラップ' => '1個',
-        );
-        return view('bulk.index',['foodstuff' => $foodstuff],['kitchen' => $kitchen]);
+        $item = DB::table('stocks')->get();
+        return view('bulk.index',['item' => $item]);
       }
 
     public function create(Request $request)
