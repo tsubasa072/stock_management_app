@@ -17,23 +17,6 @@
   <th>在庫</th>
   <th>買物</th>
 </tr>
-@foreach($a as $key => $val)
-<tr>
-  <td><input type="checkbox" name="name">{{$key}}</td>
-  <td>{{$val}}</td>
-  <td> <input type="number" name="" value=""> </td>
-</tr>
-@endforeach
-<tr>
-  <th>キッチン用品</th>
-</tr>
-@foreach($b as $key => $val)
-<tr>
-  <td><input type="checkbox" name="name">{{$key}}</td>
-  <td>{{$val}}</td>
-  <td> <input type="number" name="" value=""> </td>
-</tr>
-@endforeach
 </table>
 @endsection
 

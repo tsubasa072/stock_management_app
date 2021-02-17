@@ -17,26 +17,7 @@
     <th>在庫</th>
     <th>買物</th>
   </tr>
-<tr>
-  <th>食材</th>
-</tr>
-@foreach($a as $key => $val)
-<tr>
-  <td><input type="checkbox">{{$key}}</td>
-  <td>{{$val}}</td>
-  <td> <input type="number" name="volume" value=""> </td>
-</tr>
-@endforeach
-<tr>
-  <th>キッチン用品</th>
-</tr>
-@foreach($b as $key => $val)
-<tr>
-  <td><input type="checkbox">{{$key}}</td>
-  <td>{{$val}}</td>
-  <td> <input type="number" name="volume" value=""> </td>
-</tr>
-@endforeach
+
 </table>
 @endsection
 

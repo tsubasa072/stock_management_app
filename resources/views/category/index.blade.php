@@ -15,17 +15,14 @@
         <th>在庫</th>
         <th>入出</th>
       </tr>
-      <tr>
-        <th>食材</th>
-      </tr>
-      @foreach($foodstuff as $key => $val)
-      <tr>
-        <td><input type="checkbox" id="{{$key}}" value="">
-          <label for="{{$key}}">{{$key}}</label></td>
-        <td>{{$val}}</td>
-        <td><input type="number" class="tool" step="0.5"></td>
-      </tr>
-      @endforeach
+       <tr>
+         <th>{{$item->category_id}}</th>
+       </tr>
+       <tr>
+         <td>{{$item->name}}</td>
+         <td>{{$item->volume}}個</td>
+       </tr>
+
     </table>
 
 

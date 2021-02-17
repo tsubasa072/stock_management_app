@@ -8,32 +8,25 @@
 @endsection
 
 @section('content')
+--買い物リスト--
 <table>
   <tr>
     <th>カテゴリー</th>
     <th>在庫</th>
     <th>買物</th>
   </tr>
+  @foreach($item as $items)
   <tr>
-    <th>お風呂用品</th>
+    <th>{{$items->category_id}}</th>
   </tr>
-@foreach($list as $key => $val)
+
   <tr>
-    <td> <input type="checkbox">{{$key}}</td>
-    <td>{{$val}}</td>
-    <td> <input type="number" name="" value=""> </td>
+    <td>{{$items->name}}</td>
+    <td>{{$items->volume}}</td>
+    <td> <input type="number" id="tool" value=""> </td>
   </tr>
-@endforeach
- <tr>
-   <th>食材</th>
- </tr>
-@foreach($food as $key => $val)
- <tr>
-   <td><input type="checkbox">{{$key}}</td>
-   <td>{{$val}}</td>
-   <td> <input type="number" name="" value=""> </td>
- </tr>
-@endforeach
+
+  @endforeach
 </table>
 
 @endsection

@@ -15,30 +15,26 @@ class StockController extends Controller
 
   public function index(Request $request)
      {
+      $item = DB::table('stocks')->get();
       $user = Auth::user();
       $param = ['user' => $user];
-      return view('hello.index',$param);
+      return view('hello.index',$param,['item' => $item]);
     }
 
   public function login(Request $request)
     {
       return view('hello.login');
     }
-  public function getAuth(Request $request)
-    {
-      return view('hello.login');
-    }
+
   public function postAuth(Request $request)
     {
       $email = $request->email;
       $password = $request->password;
-      if (Auth::attempt(['email' => $email,
-              'password' => $password])){
-          $msg = 'ログイン完了';
-        }else {
-          $msg = ' ';
-        }
-        return view('hello.index',['message' => $msg]);
+
+      Auth::attempt(['email' => $email,
+              'password' => $password]);
+        return redirect('/stock/index');
+
     }
 
 

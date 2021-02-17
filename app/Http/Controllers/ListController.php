@@ -9,15 +9,8 @@ class ListController extends Controller
 {
     public function index(Request $request)
     {
-      $list = array(
-        'シャンプー' => '1個',
-        'リンスー' => '1個',
-      );
-      $food = array(
-        '大根' => '１個',
-        'レンコン' => '1個',
-      );
-      return view('buy_list.index',['list' => $list],['food' => $food]);
+      $item = DB::table('stocks')->get();
+      return view('buy_list.index',['item' => $item]);
     }
 
 
@@ -58,7 +51,7 @@ class ListController extends Controller
         DB::table('stocks')
               ->where('name',$request->name)
               ->delete();
-              
+
         return redirect('/buy_list');
       }
 

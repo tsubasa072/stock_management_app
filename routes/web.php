@@ -12,10 +12,11 @@
 */
 
 Route::get('stock', 'StockController@top');
-Route::get('stock/index', 'StockController@index');
+Route::get('stock/index', 'StockController@index')
+          ->middleware('auth');
+Route::post('stock/index', 'StockController@postAuth');
 Route::get('stock/login', 'StockController@login');
-Route::get('stock/auth', 'StockController@getAuth');
-Route::post('stock/auth', 'StockController@postAuth');
+
 
 Route::get('stock/create', 'StockController@create');
 Route::post('stock/store', 'StockController@store');

@@ -1,10 +1,10 @@
 @extends('layouts.stockapp')
-<link rel="stylesheet" href="{{ asset('/css/show.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/stock.index.css') }}">
 @section('title','在庫管理')
 
 @section('menubar')
       @parent
-      
+
       @if (Auth::check())
       <tr><th>USER: {{$user->name}}</th></tr>
       @endif
@@ -16,20 +16,19 @@
 @endsection
 
 @section('content')
+
 <table>
-  <form class="" action="index.html" method="post">
+  <form action="/create/delete" method="post">
     <tr>
       <th><input type="checkbox" name="" value="">
         <a href="http://localhost:8000/bulk">一括</a>
       </th>
-      <th><input type="checkbox" name="" value=""><a href="">カテゴリ</a></th>
-      <th><input type="checkbox" name="" value=""><a href="">カテゴリ</a></th>
-    </tr>
-    <tr>
-      <th><input type="checkbox" name="" value=""><a href="">カテゴリ</a></th>
-      <th><input type="checkbox" name="" value=""><a href="">カテゴリ</a></th>
-      <th><input type="checkbox" name="" value=""><a href="">カテゴリ</a></th>
-    </tr>
+      @foreach($item as $items)
+      <tr>
+        <th><input type="checkbox" name="" value="">
+          <a href="">{{$items->category_id}}</a></th>
+      </tr>
+      @endforeach
   </form>
 </table>
 @endsection

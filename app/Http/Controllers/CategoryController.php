@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth; 
 
 class CategoryController extends Controller
 {
     public function index(Request $rquest)
      {
-       $foodstuff = array(
-         '玉ねぎ' => '1個',
-         '人参' => '2個',
-         'じゃがいも' => '3個',
-       );
-       return view('category.index',['foodstuff' => $foodstuff]);
+       $item = DB::table('stocks')->first();
+
+       return view('category.index',['item' => $item]
+        );
+
      }
 
 
@@ -30,7 +30,7 @@ class CategoryController extends Controller
           'volume' => $request->volume,
           'user_id' => $request->user_id,
         ];
-
+        $user = Auth::user();
         DB::table('stocks')->insert($param);
         return redirect('/category');
       }
