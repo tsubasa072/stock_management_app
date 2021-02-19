@@ -36,7 +36,7 @@ class StockController extends Controller
         return redirect('/stock/index');
 
     }
-
+  
 
   public function create(Request $request)
     {

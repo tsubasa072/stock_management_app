@@ -15,6 +15,6 @@
 @endsection
 
 @section('footer')
-<a href="http://localhost:8000/stock/create">新規</a>
-<a href="http://localhost:8000/stock/login">ログイン</a>
+<a href="/register">新規</a>
+<a href="/login">ログイン</a>
 @endsection
