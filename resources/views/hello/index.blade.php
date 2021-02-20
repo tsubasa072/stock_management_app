@@ -13,33 +13,44 @@
         <th><a href="http://localhost:8000/user">ユーザー管理</a></th>
       </tr>
       </table>
+      <table>
+      <tr>
+        <th><a href="http://localhost:8000/message">message</a></th>
+      </tr>
+      </table>
+      <table>
+      <tr>
+        <th><a href="http://localhost:8000/buy_list">買い物リスト</a></th>
+      </tr>
+      </table>
 @endsection
 
 @section('content')
 
 <table>
-  <form action="/create/delete" method="post">
     <tr>
-      <th><input type="checkbox" name="" value="">
+      <th>
         <a href="http://localhost:8000/bulk">一括</a>
       </th>
+      <form action="/create/delete" method="post">
       @foreach($item as $items)
-      <tr>
         <th><input type="checkbox" name="" value="">
-          <a href="">{{$items->category_id}}</a></th>
-      </tr>
+          <a href="">{{$items->name}}</a></th>
       @endforeach
-  </form>
+
+      </form>
 </table>
 @endsection
 
 @section('footer')
-<a href="http://localhost:8000/category/create">項目追加</a>
+
+<a href="http://localhost:8000/stock/create">項目追加</a>
 <a href="http://localhost:8000/category/delete">項目削除</a>
 <a href={{ route('logout') }} onclick="event.preventDefault();
-document.getElementById('logout-form').submit();">
-Logout
+    document.getElementById('logout-form').submit();">
+    Logout
 </a>
-<form id='logout-form' action={{ route('logout')}} method="POST" >
-@csrf
+<form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;">
+    @csrf
+
 @endsection

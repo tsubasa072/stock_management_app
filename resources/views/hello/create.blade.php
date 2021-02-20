@@ -1,6 +1,6 @@
 @extends('layouts.stockapp')
 <link rel="stylesheet" href="{{ asset('/css/stock.css') }}">
-@section('title','新規登録')
+@section('title','在庫管理')
 
 @section('menubar')
       @parent
@@ -11,25 +11,16 @@
   @csrf
   <table>
     <tr>
-      <th>名前</th>
-      <td><input type="text" name="first_name" value=""><br></td>
-      <td><input type="text" name="last_name" value=""><br></td>
+      <th>カテゴリー名</th>
+      <td><input type="text" name="name" value=""></td>
     </tr>
     <tr>
       <th>ユーザー名</th>
-      <td><input type="text" name="name" value=""><br></td>
-    </tr>
-    <tr>
-      <th>アドレス</th>
-      <td><input type="text" name="email" value=""><br></td>
-    </tr>
-    <tr>
-      <th>passeord</th>
-      <td><input type="password" name="password" value=""></td>
+      <td><input type="text" name="user_id" value=""></td>
     </tr>
   </table>
 
-    <a href="http://localhost:8000/stock">戻る</a>
+    <a href="http://localhost:8000/stock/index">戻る</a>
     <input type="submit"  value="登録">
 </form>
 

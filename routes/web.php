@@ -17,10 +17,9 @@ Route::get('stock/index', 'StockController@index')
 Route::post('stock/index', 'StockController@postAuth');
 Route::get('stock/login', 'StockController@login');
 
-
+Route::get('stock/register', 'StockController@register');
+Route::post('stock/poststore', 'StockController@store');
 Route::get('stock/create', 'StockController@create');
-Route::post('stock/store', 'StockController@store');
-
 
 Route::get('bulk', 'BulkController@index');
 Route::get('bulk/create', 'BulkController@create');
