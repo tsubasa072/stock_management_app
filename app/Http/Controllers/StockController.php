@@ -41,22 +41,24 @@ class StockController extends Controller
 
   public function create(Request $request)
     {
+
       return view('hello.create');
     }
 
-  public function register(Request $request)
-    {
-      return view('hello.register');
-    }
 
   public function store(Request $request)
     {
-      $param = [
-        'name' => $request->name,
+      $this->validate($request, category::$rules);
+      $category = new category;
+      $form = $request->all();
+      unset($form['_token']);
+      $category->fill($form)->save();
 
-      ];
-
-      DB::table('users')->insert($param);
       return redirect('/stock/index');
+    }
+
+  public function delete(Request $request)
+    {
+      return view('hello.delete');
     }
 }

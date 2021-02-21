@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,7 +10,7 @@ class BulkController extends Controller
 {
     public function index(Request $request)
       {
-        $item = DB::table('stocks')->get();
+        $item = stock::all();
         return view('bulk.index',['item' => $item]);
       }
 

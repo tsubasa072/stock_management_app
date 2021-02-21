@@ -43,9 +43,11 @@
 @endsection
 
 @section('footer')
-
+<form class="" action="/stock/delete" method="post">
+  @csrf
 <a href="http://localhost:8000/stock/create">項目追加</a>
-<a href="http://localhost:8000/category/delete">項目削除</a>
+<input type="submit" name="" value="項目削除">
+</form>
 <a href={{ route('logout') }} onclick="event.preventDefault();
     document.getElementById('logout-form').submit();">
     Logout
