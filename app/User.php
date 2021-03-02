@@ -38,8 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function boards()
+    public function category()
     {
-      return $this->hasMany('')
+      return $this->hasOne('app/category');
     }
 }

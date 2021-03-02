@@ -14,7 +14,19 @@
         <th>在庫</th>
         <th>入出</th>
       </tr>
-      
+    </tr>
+    @foreach($item as $items)
+    <tr>
+      <th>{{$items->category_id}}</th>
+    </tr>
+    <tr>
+      <td> <input type="checkbox" id="{{$items->name}}" value="">
+        <label for="{{$items->name}}">{{$items->name}}</label></td>
+      <td>{{$items->volume}}個</td>
+      <td> <input type="number" class="tool" value=""> </td>
+    </tr>
+    @endforeach
+
     </table>
 @endsection
 

@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\stock;
+use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ListController extends Controller
 {
     public function index(Request $request)
     {
-      $item = DB::table('stocks')->get();
-      return view('buy_list.index',['item' => $item]);
+      $user_id = Auth::id();
+      $item = stock::where('user_id',4)->get();
+
+      foreach($item as $value){
+        $categories[] = category::where('id', $value->category_id)
+                        ->first();
+
+      }
+      return view('buy_list.index',['item' => $item,'categories' => $categories]);
     }
 
 
@@ -62,14 +72,12 @@ class ListController extends Controller
       }
     public function store(Request $request)
       {
-        $param = [
-          'category_id' => $request->category_id,
-          'name' => $request->name,
-          'volume' => $request->volume,
-          'user_id' => $request->user_id,
-        ];
-
-        DB::table('stocks')->insert($param);
+        $this->validate($request, Stock::$rules);
+        $stock = new Stock;
+        $form = $request->all();
+        unset($form['_token']);
+        $stock->fill($form)->save();
+        
         return redirect('/buy_list');
       }
 }

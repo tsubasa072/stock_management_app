@@ -14,7 +14,19 @@
     </style>
 </head>
 <body>
-    <header>@yield('title')</header>
+    <header>
+      <table>
+      <tr>
+      @yield('title')
+      </tr>
+      <tr>
+        <th> ・<a href="http://localhost:8000/stock/index">top</a>
+         ・<a href="http://localhost:8000/user">user</a>
+         ・<a href="http://localhost:8000/message">message</a>
+         ・<a href="http://localhost:8000/buy_list">buy_list</a> </th>
+      </tr>
+      </table>
+    </header>
     <div class="wrapper">
        <div class="menubar">
         @section('menubar')

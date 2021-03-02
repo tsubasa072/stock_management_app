@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <th>ユーザー名</th>
-      <td><input type="text" name="user_id" value=""></td>
+      <td><input type="text" name="user_id" value="{{Auth::id()}}"></td>
     </tr>
   </table>
 

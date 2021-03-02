@@ -15,6 +15,7 @@
         <th>入出</th>
       </tr>
       
+
     </table>
 @endsection
 

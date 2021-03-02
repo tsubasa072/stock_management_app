@@ -17,7 +17,7 @@
           border: solid 1px;}
 .wrapper {display: flex;}
 .content { padding: 10px; width: auto;}
-table {padding: 20px;}
+.wrapper table {padding: 20px;}
 ul {margin: 0px;}
 table tr td {padding: 0px 30px;}
 form {display: inline-block;}

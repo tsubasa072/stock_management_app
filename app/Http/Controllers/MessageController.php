@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\stock;
+use App\category;
+use App\message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -24,13 +28,12 @@ class MessageController extends Controller
       }
     public function store(Request $request)
       {
-        $param = [
-          'receive_user_id' => 'ori',
-          'send_user_id' => $request->send_user_id,
-          'title' => $request->title,
-          'comment' => $request->comment,
-        ];
-        DB::table('messages')->insert($param);
+        $this->validate($request, Message::$rules);
+        $message = new message;
+        $form = $request->all();
+        unset($form['_token']);
+        $message->fill($form)->save();
+
         return redirect('/message');
       }
 

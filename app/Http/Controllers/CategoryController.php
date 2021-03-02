@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
     public function index(Request $rquest)
      {
-       $item = DB::table('stocks')->first();
-
+       $item = stock::all();
+       
        return view('category.index',['item' => $item]
         );
 

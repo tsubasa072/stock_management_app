@@ -3,15 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\stock;
+use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BulkController extends Controller
 {
     public function index(Request $request)
       {
-        $item = stock::all();
-        return view('bulk.index',['item' => $item]);
+        $user_id = Auth::id();
+        $item = stock::where('user_id',4)->get();
+        //dd($item);
+        foreach($item as $value){
+          $categories[] = category::where('id', $value->category_id)
+                          ->first();
+
+        }
+
+        return view('bulk.index',['item' => $item, 'categories' => $categories]);
       }
 
     public function create(Request $request)
@@ -20,50 +30,36 @@ class BulkController extends Controller
       }
     public function store(Request $request)
       {
-        $param = [
-          'category_id' => $request->category_id,
-          'name' => $request->name,
-          'volume' => $request->volume,
-          'user_id' => $request->user_id,
+        $this->validate($request, Stock::$rules);
+        $stock = new Stock;
+        $form = $request->all();
+        unset($form['_token']);
+        $stock->fill($form)->save();
 
-        ];
-        DB::table('stocks')->insert($param);
         return redirect('/bulk');
 
       }
 
     public function edit(Request $request)
       {
-        $food = array(
-          '長ネギ' => '1個',
-        );
-        $kit = array(
-          'スポンジ' => '1個',
-        );
-        return view('bulk.edit',['food' => $food],['kit' => $kit]);
+        $item = stock::all();
+        // dd($item);
+        return view('bulk.edit',['item' => $item]);
       }
     public function update(Request $request)
       {
-        $param = [
-          'volume' => $request->volume,
-        ];
-        DB::table('stocks')
-              ->where('volume',$request->volume)
-              ->update($param);
+        $this->validate($request, Stock::$rules);
+        $stock = Stock::where('name');
+        $form = $request->all();
+        unset($form['_token']);
+        $stock->fill($form)->save();
         return redirect('/bulk');
       }
 
 
     public function delete(Request $request)
       {
-        $food = array(
-          '玉ねぎ' => '1個',
-          '人参' => '2個',
-        );
-        $kit = array(
-          '洗剤' => '1個',
-        );
-        return view('bulk.delete',['food' => $food],['kit' => $kit]);
+        return view('bulk.delete');
       }
     public function destroy(Request $request)
       {

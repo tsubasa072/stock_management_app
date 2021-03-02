@@ -1,7 +1,7 @@
-table {margin: auto; }
-tr,th,td {padding: 10px;}
+.wrapper table {margin: auto; }
+.wrapper tr,th,td {padding: 10px;}
 
-.footer input,a {
+.footer input,.footer a,.wrapper a {
   display: inline-block;
   min-width: 180px;
   text-align: center;
@@ -17,4 +17,4 @@ tr,th,td {padding: 10px;}
 
 .tool {width: 60px;}
 .footer input {margin: 30px 10px;}
-table th  {border: solid 1px;}
+.wrapper table th  {border: solid 1px;}

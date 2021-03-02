@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\category;
-use App\stock;
+use App\Category;
+use App\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +17,12 @@ class StockController extends Controller
 
   public function index(Request $request)
      {
-      $item = category::all();
+      $user_id = Auth::id();
+      $item = category::where('user_id',4);
       $user = Auth::user();
       $param = ['user' => $user];
       return view('hello.index',$param,['item' => $item]);
+
     }
 
   public function login(Request $request)

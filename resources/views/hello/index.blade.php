@@ -6,7 +6,7 @@
       @parent
 
       @if (Auth::check())
-      <tr><th>USER: {{$user->name}}</th></tr>
+      <tr><th>USER: {{$user->name}}(USER_ID: {{$user->id}})</th></tr>
       @endif
       <table>
       <tr>
@@ -48,11 +48,11 @@
 <a href="http://localhost:8000/stock/create">項目追加</a>
 <input type="submit" name="" value="項目削除">
 </form>
-<a href={{ route('logout') }} onclick="event.preventDefault();
+<a href="" onclick="event.preventDefault();
     document.getElementById('logout-form').submit();">
     Logout
 </a>
-<form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;">
+<form id='logout-form' action="{{ route('logout')}}" method="POST" style="display: none;">
     @csrf
-
+</form>
 @endsection

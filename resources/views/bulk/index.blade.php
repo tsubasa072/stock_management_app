@@ -15,8 +15,13 @@
         <th>入出</th>
       </tr>
       @foreach($item as $items)
+
       <tr>
-        <th>{{$items->category_id}}</th>
+        @foreach ($categories as $category)
+          @if($category->id == $items->category_id)
+          <th>{{$category->name}}</th>
+          @endif
+        @endforeach
       </tr>
       <tr>
         <td> <input type="checkbox" id="{{$items->name}}" value="">
@@ -24,6 +29,7 @@
         <td>{{$items->volume}}個</td>
         <td> <input type="number" class="tool" value=""> </td>
       </tr>
+
       @endforeach
     </table>
 @endsection
@@ -34,7 +40,7 @@
     <a href="http://localhost:8000/bulk/create">登録</a>
     <form  action="/bulk/edit" method="post">
       @csrf
-      <input type="submit" value="更新" >
+      <input type="submit"  value="更新">
     </form>
     <form  action="/bulk/delete" method="post">
       @csrf

@@ -1,5 +1,5 @@
 
-  input,a {
+  .wrapper input, .wrapper a {
   display: inline-block;
   min-width: 180px;
   text-align: center;
@@ -12,5 +12,5 @@
   border: 1px dashed #FFF;
   box-shadow: 0px 0px 0px 5px #293b6a;
   margin: 10px 10px 10px 10px;}
-table {margin: auto;}
+.wrapper table {margin: auto;}
 .content {text-align: center;}

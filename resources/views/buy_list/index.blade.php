@@ -16,13 +16,17 @@
     <th>買物</th>
   </tr>
   @foreach($item as $items)
-  <tr>
-    <th>{{$items->category_id}}</th>
-  </tr>
+    <tr>
+      @foreach ($categories as $category)
+        @if($category->id == $items->category_id)
+        <th>{{$category->name}}</th>
+        @endif
+      @endforeach
+    </tr>
 
   <tr>
     <td>{{$items->name}}</td>
-    <td>{{$items->volume}}</td>
+    <td>{{$items->volume}}個</td>
     <td> <input type="number" id="tool" value=""> </td>
   </tr>
 

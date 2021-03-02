@@ -15,14 +15,15 @@
         <th>在庫</th>
         <th>入出</th>
       </tr>
+      @foreach ($item as $items)
        <tr>
-         <th>{{$item->category_id}}</th>
+         <th>{{$items->category_id}}</th>
        </tr>
        <tr>
-         <td>{{$item->name}}</td>
-         <td>{{$item->volume}}個</td>
+         <td>{{$items->name}}</td>
+         <td>{{$items->volume}}個</td>
        </tr>
-
+       @endforeach
     </table>
 
 

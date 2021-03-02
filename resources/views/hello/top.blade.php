@@ -1,4 +1,4 @@
-@extends('layouts.stockapp')
+@extends('layouts.stock_app')
 <link rel="stylesheet" href="{{ asset('/css/stock.css') }}">
 <style>
   h1 {font-size: 80px;}

@@ -7,6 +7,13 @@
 @endsection
 
 @section('content')
+@if (count($errors) > 0)
+  <ul>
+    @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+@endif
 <form  action="/bulk/store" method="POST">
   @csrf
   <table>
@@ -23,8 +30,8 @@
       <td><input type="number" name="volume" value=""></td>
     </tr>
     <tr>
-      <th>ユーザー名</th>
-      <td><input type="text" name="user_id" value=""></td>
+      <th>ユーザーID</th>
+      <td><input type="text" name="user_id" value="{{Auth::id()}}"></td>
     </tr>
   </table>
   <a href="http://localhost:8000/bulk">戻る</a>
