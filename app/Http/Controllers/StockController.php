@@ -18,9 +18,11 @@ class StockController extends Controller
   public function index(Request $request)
      {
       $user_id = Auth::id();
-      $item = category::where('user_id',4);
+      $item = category::where('user_id',4)->get();
       $user = Auth::user();
       $param = ['user' => $user];
+
+
       return view('hello.index',$param,['item' => $item]);
 
     }

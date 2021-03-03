@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\stock;
+use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,11 @@ class CategoryController extends Controller
 {
     public function index(Request $rquest)
      {
-       $item = stock::all();
-       
-       return view('category.index',['item' => $item]
+       $user_id = Auth::id();
+       $item = stock::where('user_id', $user_id)->get();
+       $categories[] = category::where('id',1)
+                          ->first();
+       return view('category.index',['item' => $item, 'categories' => $categories]
         );
 
      }
@@ -25,14 +28,11 @@ class CategoryController extends Controller
      }
     public function store(Request $request)
       {
-        $param = [
-          'category_id' => $request->category_id,
-          'name' => $request->name,
-          'volume' => $request->volume,
-          'user_id' => $request->user_id,
-        ];
-        $user = Auth::user();
-        DB::table('stocks')->insert($param);
+        $this->validate($request,Stock::$rules);
+        $stock = new Stock;
+        $form = $request->all();
+        unset($form['_token']);
+        $stock->fill($form)->save();
         return redirect('/category');
       }
 

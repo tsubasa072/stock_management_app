@@ -11,8 +11,7 @@
   @csrf
   <table>
     <tr>
-      <th>カテゴリー名</th>
-      <td><input type="text" name="category_id" value=""></td>
+      <td><input type="hidden" name="category_id" value="1"></td>
     </tr>
     <tr>
       <th>登録名</th>
@@ -24,7 +23,7 @@
     </tr>
     <tr>
       <th>ユーザー名</th>
-      <td><input type="text" name="user_id" value=""></td>
+      <td><input type="text" name="user_id" value="{{Auth::id()}}"></td>
     </tr>
   </table>
 

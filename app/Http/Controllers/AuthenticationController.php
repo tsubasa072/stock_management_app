@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\user;
 use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
 {
     public function index(Request $request)
     {
-      $user = array(
-        '山田裕貴' => '村山',
-      );
-      return view('user.index',['user' => $user]);
+      $item = user::where('name', $request->input)->first();
+      $param = ['input' => $request->input, 'item' => $item];
+      return view('user.index',$param);
     }
 
     public function store(Request $request)
@@ -27,12 +27,11 @@ class AuthenticationController extends Controller
 
     public function destroy(Request $request)
     {
-      $user = array(
-        '岩田剛典' => 'コブラ',
-      );
-      $use = array(
-        '町田啓太' => 'ノボル',
-      );
-      return view('user.destroy',['user' => $user],['use' => $use]);
+      $item = user::where('name', $request->input)->first();
+      $param = ['input' => $request->input, 'item' => $item];
+
+      $use = user::all();
+
+      return view('user.destroy',$param,['use' => $use]);
     }
 }

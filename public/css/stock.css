@@ -1,6 +1,6 @@
 
 h1  {text-align: center;}
-.wrapper input,.wrapper a {
+.wrapper input,.wrapper a ,.footer a {
   display: inline-block;
   min-width: 180px;
   text-align: center;

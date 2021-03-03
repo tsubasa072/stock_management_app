@@ -32,12 +32,13 @@
       <th>
         <a href="http://localhost:8000/bulk">一括</a>
       </th>
+    </tr>
       <form action="/create/delete" method="post">
       @foreach($item as $items)
         <th><input type="checkbox" name="" value="">
-          <a href="">{{$items->name}}</a></th>
-      @endforeach
+          <a href="http://localhost:8000/category">{{$items->name}}</a></th>
 
+      @endforeach
       </form>
 </table>
 @endsection

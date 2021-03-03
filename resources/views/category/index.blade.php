@@ -16,13 +16,20 @@
         <th>入出</th>
       </tr>
       @foreach ($item as $items)
+
+        @foreach($categories as $category)
+         @if ($category->id == $items->category_id)
        <tr>
-         <th>{{$items->category_id}}</th>
+         <th>{{$category->name}}</th>
        </tr>
        <tr>
          <td>{{$items->name}}</td>
          <td>{{$items->volume}}個</td>
+         <td> <input type="number" class="tool" value=""> </td>
        </tr>
+         @endif
+        @endforeach
+
        @endforeach
     </table>
 

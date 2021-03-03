@@ -18,7 +18,6 @@ class BulkController extends Controller
         foreach($item as $value){
           $categories[] = category::where('id', $value->category_id)
                           ->first();
-
         }
 
         return view('bulk.index',['item' => $item, 'categories' => $categories]);

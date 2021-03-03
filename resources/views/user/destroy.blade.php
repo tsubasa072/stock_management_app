@@ -9,8 +9,11 @@
           <th>ユーザー検索</th>
         </tr>
         <tr>
-          <td> <input type="text" name="" value=""> </td>
+          <form class="" action="/user" method="post">
+            @csrf
+          <td> <input type="text" name="input" value="{{$input}}"> </td>
           <td> <input type="submit" name="" value="検索"> </td>
+          </form>
         </tr>
       </table>
 @endsection
@@ -26,25 +29,26 @@
     <th>アドレス</th>
   </tr>
   <tr>
-    @foreach($user as $key => $val)
-    <td>{{$key}}</td>
-    <td>{{$val}}</td>
-    @endforeach
-    <td>hirow-kobura@ex</td>
+    @if(isset($item))
+    <td>{{$item->first_name}}{{$item->last_name}}</td>
+    <td>{{$item->name}}</td>
+    <td>{{$item->email}}</td>
     <form class="" action="index.html" method="post">
     <td> <input type="submit" name="" value="使用解除"> </td>
     </form>
+    @endif
   </tr>
+  @foreach ($use as $value)
   <tr>
-    @foreach($use as $key => $val)
-    <td>{{$key}}</td>
-    <td>{{$val}}</td>
-    @endforeach
-    <td>hirow-noboru@ex</td>
+    <td>{{$value->first_name}}{{$value->last_name}}</td>
+    <td>{{$value->name}}</td>
+    <td>{{$value->email}}</td>
     <form class="" action="index.html" method="post">
     <td> <input type="submit" name="" value="使用解除"> </td>
     </form>
   </tr>
+  @endforeach
+
 </table>
 
 @endsection

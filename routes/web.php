@@ -62,6 +62,7 @@ Route::post('buy_list/delete', 'ListController@delete');
 Route::post('buy_list/destroy', 'ListController@destroy');
 
 Route::get('user', 'AuthenticationController@index');
+Route::post('user', 'AuthenticationController@index');
 Route::get('user/store', 'AuthenticationController@store');
 Route::get('user/destroy', 'AuthenticationController@destroy');
 
