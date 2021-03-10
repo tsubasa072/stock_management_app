@@ -1,7 +1,7 @@
-.wrapper table {margin: auto; }
+.wrapper table {margin: auto;}
 .wrapper tr,th,td {padding: 10px;}
 
-.footer input,.footer a,.wrapper a {
+.footer input,.footer a,.wrapper a ,.edit ,.delete{
   display: inline-block;
   min-width: 180px;
   text-align: center;
@@ -16,5 +16,5 @@
   margin: 10px 10px 0px 10px;}
 
 .tool {width: 60px;}
-.footer input {margin: 30px 10px;}
-.wrapper table th  {border: solid 1px;}
+
+.wrapper table th {border: solid 1px;}

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\user;
+use App\Follow_request;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
 {
@@ -16,13 +18,15 @@ class AuthenticationController extends Controller
 
     public function store(Request $request)
     {
-      $user = array(
-        '鈴木伸之' => 'ヤマト',
-      );
-      $use = array(
-        '山下健二郎' => 'ダン',
-      );
-      return view('user.store',['user' => $user],['use' => $use]);
+      $user_id = Auth::id();
+      $item = Follow_request::where('request_user_id',$user_id)
+              ->get();
+              // dd($item);
+      foreach ($item as $value){
+        $users[] = user::where('id',$value->user_id)->first();
+      }
+    // dd($users);
+      return view('user.store',['item' => $item, 'users' => $users]);
     }
 
     public function destroy(Request $request)

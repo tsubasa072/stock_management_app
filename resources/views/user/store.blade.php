@@ -9,8 +9,11 @@
           <th>ユーザー検索</th>
         </tr>
         <tr>
+          <form class="" action="/user" method="post">
+            @csrf
           <td> <input type="text" name="" value=""> </td>
           <td> <input type="submit" name="" value="検索"> </td>
+          </form>
         </tr>
       </table>
 @endsection
@@ -25,28 +28,23 @@
     <th>ユーザー名</th>
     <th>アドレス</th>
   </tr>
+
+  @foreach($item as $items)
   <tr>
-    @foreach($user as $key => $val)
-    <td>{{$key}}</td>
-    <td>{{$val}}</td>
+    @foreach($users as $user)
+      @if ($user->id == $items->user_id)
+        <td>{{$user->first_name}} {{$user->last_name}}</td>
+        <td>{{$user->name}}</td>
+        <td>{{$user->email}}</td>
+      @endif
     @endforeach
-    <td>hirow-san-no@ex</td>
     <form class="" action="index.html" method="post">
-    <td> <input type="submit" name="" value="承認する"> </td>
-    <td> <input type="submit" name="" value="承認しない"> </td>
+    <td> <input type="submit" name="" value="承認する">
+    <input type="submit" name="" value="承認しない"> </td>
     </form>
   </tr>
-  <tr>
-    @foreach($use as $key => $val)
-    <td>{{$key}}</td>
-    <td>{{$val}}</td>
-    @endforeach
-    <td>hirow-dann@ex</td>
-    <form class="" action="index.html" method="post">
-    <td> <input type="submit" name="" value="承認する"> </td>
-    <td> <input type="submit" name="" value="承認しない"> </td>
-    </form>
-  </tr>
+  @endforeach
+
 </table>
 
 @endsection

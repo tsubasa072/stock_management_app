@@ -35,9 +35,10 @@
     </tr>
       <form action="/create/delete" method="post">
       @foreach($item as $items)
+      <tr>
         <th><input type="checkbox" name="" value="">
           <a href="http://localhost:8000/category">{{$items->name}}</a></th>
-
+      </tr>
       @endforeach
       </form>
 </table>

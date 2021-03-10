@@ -8,32 +8,47 @@
 @endsection
 
 @section('content')
+<form  action="/bulk/delete_conf" method="post">
+  @csrf
+
     <table>
       <tr>
         <th>カテゴリー</th>
         <th>在庫</th>
         <th>入出</th>
       </tr>
-    </tr>
-    @foreach($item as $items)
-    <tr>
-      <th>{{$items->category_id}}</th>
-    </tr>
-    <tr>
-      <td> <input type="checkbox" id="{{$items->name}}" value="">
-        <label for="{{$items->name}}">{{$items->name}}</label></td>
-      <td>{{$items->volume}}個</td>
-      <td> <input type="number" class="tool" value=""> </td>
-    </tr>
-    @endforeach
+      <tr>
+        @foreach ($ctgrs as $ctgr)
+            <th>{{$ctgr->name}}</th>
+      </tr>
 
+
+          @foreach($stks as $stk)
+            @foreach($stk as $value)
+          <tr>
+             @if($ctgr->id == $value->category_id)
+             <td><input type="checkbox" id="{{$value->name}}" name="choice[{{$value->id}}]" value="">
+               <label for="{{$value->name}}">{{$value->name}}</label></td>
+             <td>{{$value->volume}}個</td>
+             <td><input type="number" class="tool" name="{{$value->id}}" value=""></td>
+             @endif
+          </tr>
+          @endforeach
+         @endforeach
+        @endforeach
     </table>
+<table>
+<tr>
+<td><a href="http://localhost:8000/bulk">戻る</a></td>
+<td><input type="submit" class="delete" value="削除"></td>
+</tr>
+</table>
+</form>
+</table>
 @endsection
 
 @section('footer')
-<form  action="/bulk/destroy" method="post">
-  @csrf
-  <a href="http://localhost:8000/bulk">戻る</a>
-  <input type="submit" value="削除">
-</form>
+
+
+
 @endsection
