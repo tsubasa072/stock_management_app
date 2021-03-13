@@ -10,105 +10,92 @@ use Illuminate\Support\Facades\Auth;
 
 class BulkController extends Controller
 {
+// トップページ
     public function index(Request $request)
-      {
+    {
         $user_id = Auth::id();
         $ctgrs = category::where('user_id',$user_id)->get();
-         // dd($ctgr);
         foreach ($ctgrs as $ctgr){
-          $stks[] = stock::where('category_id', $ctgr->id)->get();
-        }// dd($stk);
-
-
-
+            $stks[] = stock::where('category_id', $ctgr->id)->get();
+        }
         return view('bulk.index',['ctgrs' => $ctgrs,'stks' => $stks]);
-      }
+    }
 
+// 登録処理
     public function create(Request $request)
-      {
+    {
         return view('bulk.create');
-      }
+    }
+
     public function store(Request $request)
-      {
+    {
         $this->validate($request, Stock::$rules);
         $stock = new Stock;
         $form = $request->all();
         unset($form['_token']);
         $stock->fill($form)->save();
-
         return redirect('/bulk');
+    }
 
-      }
-
+// 更新処理
     public function edit(Request $request)
-      {
-        // dd($request);
+    {
+        unset($request['_token']);
         $user_id = Auth::id();
-        $categories = category::where('user_id',$user_id)->get();
-        // dd($categories);
-        $input = $request->all();
-        unset($input['_token']);
-        // dd($input);
-
-
-        foreach($input as $key => $value){
-          if($value > 0){
-          $param[] = stock::where('id',$key)->first();
-
-          // dd($value);
+        foreach($request->volume as $key => $value){
+            if(!is_null($value)){
+                $stocks[] = Stock::find($key);
+                $param[$key] = $value;
+            }
         }
+        foreach($stocks as $key => $value){
+            $categories[] = category::find($value->category_id);
         }
+        return view('bulk.edit',['param' => $param,'categories' => $categories,'stocks' => $stocks]);
+    }
 
-        return view('bulk.edit',['param' => $param
-          ,'categories' => $categories,'input' => $input]);
-      }
     public function update(Request $request)
-      {
-        // dd($request);
-        $this->validate($request, Stock::$rules);
-        // dd($request);
-        $stock[] = Stock::find($request->id);
-        // dd($stock);
-        $form = $request->all();
-        unset($form['_token']);
-        $stock->fill($form)->save();
+    {
+        foreach($request->volume as $key => $value){
+            $stock = Stock::find($key);
+            $stock->volume = $value;
+            $stock->save();
+        }
         return redirect('/bulk');
-      }
+    }
 
-
+// 削除処理
     public function delete(Request $request)
-      {
+    {
         $user_id = Auth::id();
         $ctgrs = category::where('user_id',$user_id)->get();
-         // dd($ctgr);
         foreach ($ctgrs as $ctgr){
-          $stks[] = stock::where('category_id', $ctgr->id)->get();
-        }// dd($stk);
+            $stks[] = stock::where('category_id', $ctgr->id)->get();
+            }
         return view('bulk.delete',['ctgrs' => $ctgrs,'stks' => $stks]);
-      }
+    }
 
     public function delete_conf(Request $request)
-      {
-        $user_id = Auth::id();
-        $ctgrs = category::where('user_id',$user_id)->get();
-         // dd($ctgr);
-        $choice = $_POST['choice'];
-        // dd($choice);
-        foreach ($choice as $key => $value){
-          $delete[] = stock::where('id',$key)->first();
-         // dd($delete);
+    {
+    unset($request['_token']);
+    $user_id = Auth::id();
+    foreach ($request->id as $key => $value){
+        if(!is_null($value)){
+            $stocks[] = stock::find($key);
+            $param[$key] = $value;
         }
+    }
+    foreach($stocks as $key => $value){
+        $categories[] = category::find($value->category_id);
+    }
+        return view('bulk.delete_conf',['stocks' => $stocks,'categories' => $categories, 'param' => $param]);
+    }
 
-
-        return view('bulk.delete_conf',['delete' => $delete
-          ,'ctgrs' => $ctgrs]);
-      }
     public function destroy(Request $request)
-      {
-
-        DB::table('stocks')
-              ->where('name',$request->name)
-              ->delete('name');
+    {
+    foreach ($request->id as $key => $value){
+        $stock = Stock::find($key)->delete();
+    }
         return redirect('/bulk');
-      }
+    }
 }
