@@ -1,6 +1,6 @@
 
 
-.footer a {
+.footer input,.footer a{
   display: inline-block;
   min-width: 180px;
   text-align: center;
@@ -15,6 +15,9 @@
   margin: 40px 10px 10px 10px;}
 
 ul {border:solid 2px; }
-table tr th{ padding: 30px; border: solid 1px;}
-.wrapper {display: flex;}
+.wrapper table tr th{ padding: 30px; border: solid 1px;
+          min-width: 100px;}
+.wrapper {display: flex;
+          width: 100%;}
 .menubar {margin: 10px 20px;}
+.content table tr {display: inline-block;}

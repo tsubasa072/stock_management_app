@@ -1,0 +1,29 @@
+@extends('layouts.stockapp')
+<link rel="stylesheet" href="{{ asset('/css/bulk_index.css') }}">
+@section('title','在庫管理')
+
+@section('menubar')
+      @parent
+
+@endsection
+
+
+@section('content')
+    --削除--
+    <table>
+      <tr>
+        <th>カテゴリー</th>
+        <th>在庫</th>
+        <th>入出</th>
+      </tr>
+
+    </table>
+@endsection
+
+@section('footer')
+<form  action="/category/update" method="post">
+  @csrf
+  <a href="http://localhost:8000/stock/index">戻る</a>
+  <input type="submit" value="削除">
+</form>
+@endsection
