@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index(Request $rquest)
      {
-       dd($request);
+       dd($_get);
        $user_id = Auth::id();
        $categories = Category::where('user_id',$user_id)->first();
        // dd($categories);
