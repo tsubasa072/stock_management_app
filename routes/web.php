@@ -19,6 +19,7 @@ Route::get('stock/login', 'StockController@login');
 Route::get('stock/create', 'StockController@create');
 Route::post('stock/store', 'StockController@store');
 Route::post('stock/delete', 'StockController@delete');
+Route::post('stock/destroy', 'StockController@destroy');
 
 Route::get('bulk', 'BulkController@index');
 Route::get('bulk/create', 'BulkController@create');
@@ -30,6 +31,7 @@ Route::get('bulk/delete', 'BulkController@delete');
 Route::post('bulk/destroy', 'BulkController@destroy');
 // 削除確認画面
 Route::post('bulk/delete_conf', 'BulkController@delete_conf');
+
 
 
 Route::get('category', 'CategoryController@index');

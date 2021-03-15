@@ -18,7 +18,7 @@ class StockController extends Controller
   public function index(Request $request)
      {
       $user_id = Auth::id();
-      $item = category::where('user_id',4)->get();
+      $item = category::where('user_id',$user_id)->get();
       $user = Auth::user();
       $param = ['user' => $user];
 
@@ -63,6 +63,21 @@ class StockController extends Controller
 
   public function delete(Request $request)
     {
-      return view('hello.delete');
+      unset($request['_token']);
+      foreach($request->id as $key => $value){
+        $categories[] = category::find($key);
+        $param[$key] = $value;
+      }
+      return view('hello.delete',['categories' => $categories,'param' => $param]);
+    }
+
+    public function destroy(Request $request)
+    {
+    foreach($request->id as $key => $value){
+      // dd($request);
+        $categories = Category::find($key)->delete();
+
+    }
+        return redirect('/stock/index');
     }
 }

@@ -12,11 +12,13 @@ class CategoryController extends Controller
 {
     public function index(Request $rquest)
      {
+       dd($request);
        $user_id = Auth::id();
-       $item = stock::where('user_id', $user_id)->get();
-       $categories[] = category::where('id',1)
-                          ->first();
-       return view('category.index',['item' => $item, 'categories' => $categories]
+       $categories = Category::where('user_id',$user_id)->first();
+       // dd($categories);
+       $stocks = Stock::where('category_id',$categories->id)->first();
+       // dd($stocks);
+       return view('category.index',['stocks' => $stocks, 'categories' => $categories]
         );
 
      }

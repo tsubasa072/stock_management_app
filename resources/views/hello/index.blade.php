@@ -26,35 +26,40 @@
 @endsection
 
 @section('content')
-
-<table>
-    <tr>
-      <th>
-        <a href="http://localhost:8000/bulk">一括</a>
-      </th>
-    </tr>
-      <form action="/create/delete" method="post">
-      @foreach($item as $items)
-      <tr>
-        <th><input type="checkbox" name="" value="">
-          <a href="http://localhost:8000/category">{{$items->name}}</a></th>
-      </tr>
-      @endforeach
-      </form>
-</table>
+<form class="" action="/stock/delete" method="post">
+@csrf
+    <table>
+        <tr>
+            <th>
+                <a href="http://localhost:8000/bulk">一括</a>
+            </th>
+        </tr>
+        @foreach($item as $items)
+            <tr>
+                <th><input type="checkbox" name="id[{{ $items->id }}]" value="{{ $items->id }}">
+                    <a href="/category">
+                      {{ $items->name }}
+                      <input type="hidden" name="" value="{{ $items->id }}">
+                    </a>
+                </th>
+            </tr>
+        @endforeach
+    </table>
+    <h2>
+        <a href="http://localhost:8000/stock/create">項目追加</a>
+    </h2>
+    <h2>
+        <input type="submit" name="" value="項目削除">
+    </h2>
+</form>
 @endsection
 
 @section('footer')
-<form class="" action="/stock/delete" method="post">
-  @csrf
-<a href="http://localhost:8000/stock/create">項目追加</a>
-<input type="submit" name="" value="項目削除">
-</form>
 <a href="" onclick="event.preventDefault();
-    document.getElementById('logout-form').submit();">
-    Logout
+document.getElementById('logout-form').submit();">
+Logout
 </a>
 <form id='logout-form' action="{{ route('logout')}}" method="POST" style="display: none;">
-    @csrf
+@csrf
 </form>
 @endsection
