@@ -36,6 +36,7 @@ Route::post('bulk/delete_conf', 'BulkController@delete_conf');
 
 Route::get('category', 'CategoryController@index');
 Route::get('category/create', 'CategoryController@create');
+Route::post('category/create', 'CategoryController@create');
 Route::post('category/store', 'CategoryController@store');
 Route::get('category/edit', 'CategoryController@edit');
 Route::post('category/edit', 'CategoryController@edit');

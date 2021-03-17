@@ -39,7 +39,8 @@
                 <th><input type="checkbox" name="id[{{ $items->id }}]" value="{{ $items->id }}">
                     <a href="/category">
                       {{ $items->name }}
-                      <input type="hidden" name="" value="{{ $items->id }}">
+                      <input type="hidden" name="category_id[{{ $items->id }}]" value="{{ $items->id }}">
+
                     </a>
                 </th>
             </tr>

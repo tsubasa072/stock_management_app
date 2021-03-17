@@ -9,6 +9,8 @@
 
 
 @section('content')
+<form  action="category/edit" method="post">
+  @csrf
     <table>
       <tr>
         <th>カテゴリー</th>
@@ -16,35 +18,33 @@
         <th>入出</th>
       </tr>
       <tr>
-        <th>{{$categories->name}}</th>
+        @foreach($categories as $category)
+        <th>{{$category->name}}</th>
       </tr>
-         @if ($categories->id == $stocks->category_id)
-
+        @endforeach
        <tr>
          <td>{{$stocks->name}}</td>
          <td>{{$stocks->volume}}個</td>
-         <td> <input type="number" class="tool" value=""> </td>
+         <td> <input type="number" class="tool" name="volume" value=""> </td>
        </tr>
-         @endif
-    </table>
 
+
+    </table>
+    <table>
+      <tr>
+          <input type="submit" value="更新">
+          <a href="http://localhost:8000/category/delete">削除</a>
+          <a href="http://localhost:8000/buy_list">買い物リスト</a>
+      </tr>
+    </table>
+</form>
 
 @endsection
 
 @section('footer')
-<table>
-  <tr>
-    <a href="http://localhost:8000/category/create">登録</a>
-    <form  action="category/edit" method="post">
-      @csrf
-      <input type="submit" value="更新" >
-    </form>
-    <form  action="category/delete" method="post">
-      @csrf
-      <input type="submit" value="削除">
-    </form>
-      <a href="http://localhost:8000/buy_list">買い物リスト</a>
-  </tr>
-</table>
+<form action="category/create" method="post">
+  @csrf
+  <input type="submit" name="" value="登録">
+</form>
 
 @endsection

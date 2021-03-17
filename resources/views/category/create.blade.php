@@ -11,7 +11,8 @@
   @csrf
   <table>
     <tr>
-      <td><input type="hidden" name="category_id" value="1"></td>
+      
+      <td><input type="hidden" name="category_id[{{ $category->id }}]" value="{{ $category->id }}"></td>
     </tr>
     <tr>
       <th>登録名</th>

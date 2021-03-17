@@ -12,12 +12,14 @@ class CategoryController extends Controller
 {
     public function index(Request $rquest)
      {
-       dd($_get);
+       // dd($request);
        $user_id = Auth::id();
-       $categories = Category::where('user_id',$user_id)->first();
+       $categories = Category::where('user_id',$user_id)->get();
        // dd($categories);
-       $stocks = Stock::where('category_id',$categories->id)->first();
-       // dd($stocks);
+       foreach($categories as $category){
+       $stocks = Stock::where('category_id',$category->id)->first();
+     }
+     // dd($stocks);
        return view('category.index',['stocks' => $stocks, 'categories' => $categories]
         );
 
@@ -26,7 +28,14 @@ class CategoryController extends Controller
 
     public function create(Request $request)
      {
-       return view('category.create');
+       unset($request['_token']);
+       // dd($request);
+       foreach($request->category_id as $key => $value){
+         // dd($request->category_id);
+         $category = Category::where('id',$key)->first();
+         // dd($category);
+       }
+       return view('category.create',['category' => $category]);
      }
     public function store(Request $request)
       {
