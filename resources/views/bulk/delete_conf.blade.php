@@ -38,7 +38,6 @@
     </tr>
 </table>
 </form>
-</table>
 @endsection
 
 @section('footer')

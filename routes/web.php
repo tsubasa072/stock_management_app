@@ -42,7 +42,9 @@ Route::get('category/edit', 'CategoryController@edit');
 Route::post('category/edit', 'CategoryController@edit');
 Route::post('category/update', 'CategoryController@update');
 Route::get('category/delete', 'CategoryController@delete');
-Route::post('category/delete', 'CategoryController@delete');
+Route::post('category/destroy', 'CategoryController@destroy');
+// 削除確認画面
+Route::post('category/delete_conf', 'CategoryController@delete_conf');
 
 
 Route::get('message', 'MessageController@index');

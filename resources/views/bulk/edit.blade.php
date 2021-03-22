@@ -41,8 +41,10 @@
             @endforeach
         @endforeach
     </table>
-    <input type="submit" name="" value="更新">
-    <a href="http://localhost:8000/bulk">戻る</a>
+    <table>
+        <td><h2><input type="submit" name="" value="更新"></h2></td>
+        <td><a href="http://localhost:8000/bulk">戻る</a></td>
+    </table>
 </form>
 @endsection
 

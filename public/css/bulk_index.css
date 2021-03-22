@@ -1,7 +1,7 @@
 .wrapper table {margin: auto;}
 .wrapper tr,th,td {padding: 10px;}
 
-.footer input,.footer a,.wrapper a ,.edit ,.delete{
+.footer input,.footer a,.wrapper a ,.edit ,.delete, h2{
   display: inline-block;
   min-width: 180px;
   text-align: center;

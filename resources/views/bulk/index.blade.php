@@ -41,7 +41,7 @@
         <td><a href="http://localhost:8000/bulk/delete">削除</a></td>
     </tr>
     <tr>
-        <td><a href="http://localhost:8000/buy_list">買い物リスト</a></td>
+        <td></td>
         <td><a href="http://localhost:8000/stock/index">戻る</a></td>
     </tr>
 </table>
