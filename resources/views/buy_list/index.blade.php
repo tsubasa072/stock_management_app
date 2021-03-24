@@ -15,22 +15,26 @@
     <th>在庫</th>
     <th>買物</th>
   </tr>
-  @foreach($item as $items)
-    <tr>
-      @foreach ($categories as $category)
-        @if($category->id == $items->category_id)
-        <th>{{$category->name}}</th>
-    </tr>
 
-  <tr>
-    <td>{{$items->name}}</td>
-    <td>{{$items->volume}}個</td>
-    <td> <input type="number" id="tool" value=""> </td>
-    @endif
-  @endforeach
-  </tr>
+@foreach($categories as $category)
+<tr>
+<th>{{ $category->name }}</th>
+</tr>
+@foreach($stocks as $stock)
+@foreach($stock as $value)
+@if($category->id == $value->category_id)
+<tr>
+    <td>{{ $value->name }}</td>
+    <td>{{ $value->volume }}個</td>
+    <td><input type="number" name="" value=""></td>
+</tr>
 
-  @endforeach
+@endif
+@endforeach
+@endforeach
+@endforeach
+</tr>
+
 </table>
 
 @endsection

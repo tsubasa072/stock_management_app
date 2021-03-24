@@ -13,14 +13,14 @@ class ListController extends Controller
     public function index(Request $request)
     {
       $user_id = Auth::id();
-      $item = stock::where('user_id',4)->get();
-
-      foreach($item as $value){
-        $categories[] = category::where('id', $value->category_id)
-                        ->first();
-
+      $categories = Category::where('user_id', $user_id)->get();
+      // dd($categories);
+      foreach($categories as $category){
+        // dd($category);
+        $stocks[] = Stock::where('category_id', $category->id)->get();
+        // dd($stocks);
       }
-      return view('buy_list.index',['item' => $item,'categories' => $categories]);
+      return view('buy_list.index',['stocks' => $stocks,'categories' => $categories]);
     }
 
 
@@ -77,7 +77,7 @@ class ListController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $stock->fill($form)->save();
-        
+
         return redirect('/buy_list');
       }
 }

@@ -34,7 +34,7 @@
     </table>
 <table>
     <tr>
-        <td><a href="http://localhost:8000/bulk">戻る</a></td>
+        <td><a href="http://localhost:8000/category">戻る</a></td>
         <td><input type="submit" class="delete" value="削除"></td>
     </tr>
 </table>

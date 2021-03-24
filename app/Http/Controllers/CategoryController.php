@@ -10,33 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+  //カテゴリートップページ
     public function index(Request $rquest)
      {
-       // dd($request);
        $user_id = Auth::id();
        $categories = Category::where('user_id',$user_id)->get();
-       // dd($categories);
-
        foreach($categories as $category){
        $stocks[] = Stock::where('category_id',$category->id)->get();
        $param = category::where('id', $category->id)->first();
-       // dd($param);
      }
-     // dd($stocks);
        return view('category.index',['stocks' => $stocks, 'categories' => $categories
                 ,'param' => $param]);
-
      }
 
 
+  //登録処理
     public function create(Request $request)
      {
        unset($request['_token']);
-       // dd($request);
        foreach($request->id as $key => $value){
-         // dd($request->id);
          $category = Category::where('id',$key)->first();
-         // dd($value);
        }
        return view('category.create',['category' => $category]);
      }
@@ -52,6 +45,7 @@ class CategoryController extends Controller
       }
 
 
+  //更新処理
     public function edit(Request $request)
      {
        unset($request['_token']);
@@ -78,6 +72,7 @@ class CategoryController extends Controller
     }
 
 
+  //削除処理
     public function delete(Request $request)
        {
          $user_id = Auth::id();
