@@ -16,22 +16,17 @@
     <th>買物</th>
   </tr>
 
-@foreach($categories as $category)
+@foreach($buy_lists as $buy_list)
 <tr>
-<th>{{ $category->name }}</th>
+<th>{{ $buy_list->name }}</th>
 </tr>
-@foreach($stocks as $stock)
-@foreach($stock as $value)
-@if($category->id == $value->category_id)
+
 <tr>
-    <td>{{ $value->name }}</td>
-    <td>{{ $value->volume }}個</td>
+    <td>{{ $buy_list->volume }}個</td>
     <td><input type="number" name="" value=""></td>
 </tr>
 
-@endif
-@endforeach
-@endforeach
+
 @endforeach
 </tr>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\stock;
 use App\category;
+use App\list;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -13,14 +14,9 @@ class ListController extends Controller
     public function index(Request $request)
     {
       $user_id = Auth::id();
-      $categories = Category::where('user_id', $user_id)->get();
-      // dd($categories);
-      foreach($categories as $category){
-        // dd($category);
-        $stocks[] = Stock::where('category_id', $category->id)->get();
-        // dd($stocks);
-      }
-      return view('buy_list.index',['stocks' => $stocks,'categories' => $categories]);
+      $buy_lists = List::where('user_id', $user_id)->get();
+
+      return view('buy_list.index',['buy_lists' -> $buy_lists]);
     }
 
 
@@ -68,7 +64,7 @@ class ListController extends Controller
 
     public function create(Request $request)
       {
-        return view('buy_list.create');
+        return view('/buy_list.create');
       }
     public function store(Request $request)
       {
@@ -77,7 +73,6 @@ class ListController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $stock->fill($form)->save();
-
         return redirect('/buy_list');
       }
 }

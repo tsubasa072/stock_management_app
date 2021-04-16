@@ -7,6 +7,13 @@
 @endsection
 
 @section('content')
+@if (count($errors) > 0)
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
 <form  action="/buy_list/store" method="POST">
   @csrf
   <table>
@@ -20,7 +27,7 @@
     </tr>
     <tr>
       <th>数量</th>
-      <td><input type="number" style="max-width: 50px;" name="volume" value=""></td>
+      <td><input type="number" name="volume" value=""></td>
     </tr>
     <tr>
       <th>ユーザー名</th>
